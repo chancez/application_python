@@ -28,6 +28,7 @@ attribute :settings, :kind_of => Hash, :default => {}
 # Actually defaults to "settings.py.erb", but nil means it wasn't set by the user
 attribute :settings_template, :kind_of => [String, NilClass], :default => nil
 attribute :local_settings_file, :kind_of => String, :default => 'local_settings.py'
+attribute :manage_file, :kind_of => String, :default => 'manage.py'
 attribute :debug, :kind_of => [TrueClass, FalseClass], :default => false
 attribute :collectstatic, :kind_of => [TrueClass, FalseClass, String], :default => false
 
