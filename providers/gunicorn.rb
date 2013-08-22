@@ -80,8 +80,8 @@ action :before_deploy do
       raise "No Django deployment resource found" unless django_resource
       base_command = "#{::File.join(django_resource.virtualenv, "bin", "python")} #{django_resource.manage_file} run_gunicorn"
     else
-      # Check for a gunicorn virtualenv, fall back to django virtualenv if there
-      virtualenv = new_resource.virtualenv || django_resource.virtualenv if django_resource
+      # Check for a django virtualenv, install there or into gunicorn venv
+      virtualenv = django_resource ? django_resource.virtualenv : new_resource.virtualenv
       gunicorn_command =
         if virtualenv
           "#{::File.join(virtualenv, "bin", "gunicorn")}"
